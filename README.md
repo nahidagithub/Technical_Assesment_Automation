@@ -6,17 +6,12 @@ This repository includes a comprehensive web automation task using Java that sto
  - **Description:** This means choose any browser and load this url.
  - driver.get("https://frappe.io/erpnext");
 
- ### 2. ** Click on Explore Demo and under the HR function click on the Employee.**
+ ### 2. **Click on Explore Demo and under the HR function click on the Employee.**
 - **Description:** This means after loading url click on explore demo and under the HR function click on employee.
 -  //Click Explore Demo
         driver.findElement(By.linkText("Explore demo")).click();
         Thread.sleep(4000);
-- // Click HR
-        driver.findElement(By.xpath("//span[text()='HR']")).click();
-        Thread.sleep(3000);
--// Click Employee
-        driver.findElement(By.linkText("Employee")).click();
-        Thread.sleep(3000);
+
 ### 3. **Choose any employee and from the overview screen, write test cases and automate the test.**
 - **Description:** This means choose any employee and from overview screen section, write some test cases and automate those test cases.
 - ###  **Some Test Cases**

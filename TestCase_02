@@ -1,0 +1,60 @@
+package org.example;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
+
+
+public class TestCase_02 {
+    WebDriver driver;
+    WebDriverWait wait;
+
+    @BeforeClass
+    public void setup() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+    }
+    @Test
+    public void openDemoSite() throws InterruptedException {
+        driver.get("https://frappe.io/erpnext");
+        driver.findElement(By.linkText("Explore demo")).click();
+        Thread.sleep(4000);
+
+        // Allow time for demo to open in new tab
+        for (String handle : driver.getWindowHandles()) {
+            driver.switchTo().window(handle);
+        }
+        // Click HR
+        driver.findElement(By.xpath("//span[text()='HR']")).click();
+        Thread.sleep(3000);
+
+        // Click Employee
+        driver.findElement(By.linkText("Employee")).click();
+        Thread.sleep(3000);
+
+        //Any Employee Click
+        driver.findElement(By.linkText("Reema Mehta")).click();
+        Thread.sleep(3000);
+
+        //TC_02:Verify that all mandatory fields are visible
+        Assert.assertTrue(driver.findElement(By.xpath("//input[@data-fieldname='first_name']")).isDisplayed(), "First Name not visible");
+        Assert.assertTrue(driver.findElement(By.xpath("//div[@data-fieldname='gender']")).isDisplayed(), "Gender not visible");
+        Assert.assertTrue(driver.findElement(By.xpath("//input[@data-fieldname='date_of_joining']")).isDisplayed(), "Date of Joining not visible");
+        Assert.assertTrue(driver.findElement(By.xpath("//input[@data-fieldname='date_of_birth']")).isDisplayed(), "Date of Birth not visible");
+        Assert.assertTrue(driver.findElement(By.xpath("//div[@data-fieldname='status']")).isDisplayed(), "Status not visible");
+        Assert.assertTrue(driver.findElement(By.xpath("//div[@data-fieldname='company']")).isDisplayed(), "Company not visible");
+        System.out.println("TC_1 Passed: All mandatory fields are visible");
+
+    }
+
+    @AfterClass
+    public void close() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}

@@ -18,10 +18,10 @@ This repository includes a comprehensive web automation task using Java that sto
   
 
   
-- ###  **🚀Some Test Cases**
-- ### ✔TC_01: Verify actual title with expected title is match or not.
-- ### ✔TC_02: Verify that all mandatory fields are visible.
-- ### ✔TC_03: Verify error message shown without any mandatory field.
-- ### ✔TC_04: Verify optional fields are Visible or not.
+  ###  **🚀Some Test Cases**
+  ### ✔TC_01: Verify actual title with expected title is match or not.
+  ### ✔TC_02: Verify that all mandatory fields are visible.
+  ### ✔TC_03: Verify error message shown without any mandatory field.
+  ### ✔TC_04: Verify optional fields are Visible or not.
   
    

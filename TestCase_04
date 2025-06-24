@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-public class TestCase_03 {
+public class TestCase_04 {
     WebDriver driver;
     WebDriverWait wait;
 
@@ -44,35 +44,32 @@ public class TestCase_03 {
         Thread.sleep(3000);
 
 
-
-        // TC_03: Verify error message shown without any mandatory field
-
-        WebElement firstNameField = driver.findElement(By.xpath("//input[@data-fieldname='first_name']"));
-        WebElement dobField = driver.findElement(By.xpath("//input[@data-fieldname='date_of_birth']"));
-        WebElement dojField = driver.findElement(By.xpath("//input[@data-fieldname='date_of_joining']"));
-
-        // Clear values
-        firstNameField.clear();
-        dobField.clear();
-        dojField.clear();
-
-       // Press TAB to trigger blur
-        firstNameField.sendKeys(Keys.TAB);
-        dobField.sendKeys(Keys.TAB);
-        dojField.sendKeys(Keys.TAB);
-
-        // Click Save button
-        WebElement saveButton = driver.findElement(By.xpath("//button[@data-label='Save']"));
-        saveButton.click();
-        Thread.sleep(2000);
-
-          // Check if error message or toast notification appears
-          try {
-            WebElement errorMsg = driver.findElement(By.xpath("//div[contains(@class, 'toast-message') and contains(text(), 'mandatory')]"));
-            Assert.assertTrue(errorMsg.isDisplayed(), "TC_2 FAILED: No error shown on blank mandatory fields");
-            System.out.println("TC_2 Passed: Error shown for empty mandatory fields");
+        //TC_04:Verify optional fields are Visible or not
+        
+        boolean allOptionalFieldsVisible = true;
+        try {
+            WebElement lastName = driver.findElement(By.xpath("//input[@data-fieldname='last_name']"));
+            Assert.assertTrue(lastName.isDisplayed(), "TC_03 Failed: Last Name field is not visible");
+            System.out.println("Last Name field is visible");
         } catch (NoSuchElementException e) {
-            System.out.println("TC_2 Failed: No validation message shown for mandatory fields");
+            allOptionalFieldsVisible = false;
+            System.out.println("TC_03 Failed: Last Name field is not found in the form");
+        }
+
+        try {
+            WebElement fullName = driver.findElement(By.xpath("//input[@data-fieldname='employee_name']"));
+            Assert.assertTrue(fullName.isDisplayed(), "TC_03 Failed: Full Name field is not visible");
+            System.out.println("Full Name field is visible");
+        } catch (NoSuchElementException e) {
+            allOptionalFieldsVisible = false;
+            System.out.println("TC_03 Failed: Full Name field is not found in the form");
+        }
+
+      // Final check
+        if (allOptionalFieldsVisible) {
+            System.out.println("TC_03 Passed: All optional fields are visible.");
+        } else {
+            Assert.fail("TC_03 Failed: One or more optional fields are missing.");
         }
     }
 
@@ -82,4 +79,5 @@ public class TestCase_03 {
             driver.quit();
         }
     }
+
 }

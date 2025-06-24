@@ -1,4 +1,4 @@
-# Technical Assesment - Automation Testing using Selenium
+# Technical Assesment - Automation Testing using Selenium 
 This repository includes a comprehensive web automation task using Java that store some test case and automate those tasks on a website. It follows some steps that is given below:
 
 

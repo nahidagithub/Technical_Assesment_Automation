@@ -49,7 +49,7 @@ public class TestCase_04 {
         boolean allOptionalFieldsVisible = true;
         try {
             WebElement lastName = driver.findElement(By.xpath("//input[@data-fieldname='last_name']"));
-            Assert.assertTrue(lastName.isDisplayed(), "TC_03 Failed: Last Name field is not visible");
+            Assert.assertTrue(lastName.isDisplayed(), "TC_04 Failed: Last Name field is not visible");
             System.out.println("Last Name field is visible");
         } catch (NoSuchElementException e) {
             allOptionalFieldsVisible = false;
@@ -58,7 +58,7 @@ public class TestCase_04 {
 
         try {
             WebElement fullName = driver.findElement(By.xpath("//input[@data-fieldname='employee_name']"));
-            Assert.assertTrue(fullName.isDisplayed(), "TC_03 Failed: Full Name field is not visible");
+            Assert.assertTrue(fullName.isDisplayed(), "TC_04 Failed: Full Name field is not visible");
             System.out.println("Full Name field is visible");
         } catch (NoSuchElementException e) {
             allOptionalFieldsVisible = false;

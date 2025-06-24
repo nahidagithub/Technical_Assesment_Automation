@@ -1,0 +1,63 @@
+package org.example;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
+
+public class TestCase_01 {
+    WebDriver driver;
+    WebDriverWait wait;
+
+    @BeforeClass
+    public void setup() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+    }
+
+    @Test
+    public void openDemoSite() throws InterruptedException {
+
+        //Load URL
+        driver.get("https://frappe.io/erpnext");
+
+        //Click Explore Demo
+        driver.findElement(By.linkText("Explore demo")).click();
+        Thread.sleep(4000);
+
+        // Allow time for demo to open in new tab
+        for (String handle : driver.getWindowHandles()) {
+            driver.switchTo().window(handle);
+        }
+        // Click HR
+        driver.findElement(By.xpath("//span[text()='HR']")).click();
+        Thread.sleep(3000);
+
+        // Click Employee
+        driver.findElement(By.linkText("Employee")).click();
+        Thread.sleep(3000);
+
+        //Any Employee Click
+        driver.findElement(By.linkText("Reema Mehta")).click();
+        Thread.sleep(3000);
+
+
+        //TC_01:Verify actual title with expected title is match or not
+
+        String actualTitle=driver.getTitle();
+        String expectedTitle="Reema Mehta - HR-EMP-00001";
+        Assert.assertEquals(actualTitle,expectedTitle);
+        System.out.println("TestCase-1 is passed.");
+
+    }
+    @AfterClass
+    public void close() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}

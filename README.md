@@ -13,8 +13,8 @@ This repository includes a comprehensive web automation task using Java that sto
   
 
 
-### 3. **Choose any employee and from the overview screen, write test cases and automate the test.**
-- **Description:** This means choose any employee and from overview screen section, write some test cases and automate those   test cases.
+### 3.  **Choose any employee and from the overview screen, write test cases and automate the test.**
+- **Description:** This means choose any employee and from overview screen section, write some test cases and automate those  test cases.
   
 
   
